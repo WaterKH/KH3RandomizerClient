@@ -1,0 +1,112 @@
+﻿@inject NavigationManager NavigationManager
+
+<div class="top-row pl-4 navbar">
+    <a class="navbar-brand" href="">
+        <img src="images/logo.png" style="width: 100%;" />
+    </a>
+</div>
+
+<div class="middle-row">
+    <div style="margin-left: 25px;">
+        <button @onclick="OpenQuickSeedModal" class="btn kh-create-button">Create Quick Seed</button>
+    </div>
+
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi-shuffle" aria-hidden="true" style="font-size: 1.5rem; color: #F11B43;"></span>
+                <b style="font-size: 1.1rem; margin-left: 20px;">
+                    Randomizer
+                    @if (string.IsNullOrEmpty(this.RelativePath))
+                    {
+                        <span class="selector" style="color: #F11B43;"></span>
+                    }
+                </b>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="guide" style="font-size: 1.1rem;">
+                <span class="bi-file-earmark-text" aria-hidden="true" style="font-size: 1.5rem; color: #F4CF8E;"></span>
+                <b style="font-size: 1.1rem; margin-left: 20px;">Guide</b>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="spoilerlog" style="font-size: 1.1rem;">
+                <span class="bi bi-door-open" aria-hidden="true" style="font-size: 1.5rem; color: #9555DC;"></span>
+                <b style="font-size: 1.1rem; margin-left: 20px;">Spoiler Log</b>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="sourcecode" style="font-size: 1.1rem;">
+                <span class="bi bi-terminal" aria-hidden="true" style="font-size: 1.5rem; color: #5AC4FF;"></span>
+                <b style="font-size: 1.1rem; margin-left: 20px;">Source Code</b>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="resources" style="font-size: 1.1rem;">
+                <span class="bi bi-book" aria-hidden="true" style="font-size: 1.5rem; color: #FA9933;"></span>
+                <b style="font-size: 1.1rem; margin-left: 20px;">Resources</b>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="support" style="font-size: 1.1rem;">
+                <span class="bi bi-question-circle" aria-hidden="true" style="font-size: 1.5rem; color: #43D967;"></span>
+                <b style="font-size: 1.1rem; margin-left: 20px;">About</b>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3"></li>
+        <li class="nav-item px-3">
+            <div class="nav-link">
+                <Tooltip Text="Enable Automatic Dark Mode under your Browser Settings.">
+                    <span class="bi bi-moon" aria-hidden="true" style="font-size: 1.5rem; color: #DCDCDC;"></span>
+                    <b style="font-size: 1.1rem; margin-left: 20px;">Dark Mode?</b>
+                </Tooltip>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="bottom-row">
+    <div class="row">
+        <div class="col-md-12">Mod created by:</div>
+        <div class="col-md-12">
+            <a href="https://twitter.com/water_kh" target="_blank" style="margin-left: 25px;">WaterKH</a>
+        </div>
+
+        <div class="col-md-12">
+            <a href="https://twitter.com/critic_perfect" target="_blank" style="margin-left: 25px;">CriticPerfect</a>
+        </div>
+
+        <div class="col-md-12">
+            <a href="https://www.digitalocean.com/?refcode=075bbdd84c8b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
+                <img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" width="75%" style="margin-top: 15px; margin-bottom: 10px;" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<label style="position: absolute; bottom: 0; margin-bottom: 0px; margin-left: 5px; font-size: 10pt;">Ver. 1.3.4</label>
+
+<div class="divider"></div>
+
+
+@code {
+    [CascadingParameter] public IModalService Modal { get; set; }
+
+    public string RelativePath = "";
+
+    protected override void OnInitialized()
+    {
+        this.RelativePath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+    }
+
+
+    @* Create Open Quick Seed Modal *@
+    private void OpenQuickSeedModal()
+    {
+        var parameters = new ModalParameters();
+        var options = new ModalOptions { Class = "modal-custom" };
+
+        Modal.Show<CreateQuickSeedModal>("Create Quick Seed", parameters, options);
+    }
+}

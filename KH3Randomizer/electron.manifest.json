@@ -1,0 +1,53 @@
+{
+  "executable": "KH3Randomizer",
+  "name": "KH3Randomizer",
+  "author": "waterkh",
+  "description": "KH3Randomizer", 
+  "singleInstance": true,
+  "environment": "Production",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WaterKH/KH3RandomizerClient.git"
+  },
+  "build": {
+    "appId": "com.KH3Randomizer.app",
+    "productName": "KH3Randomizer",
+    "copyright": "Copyright © 2022",
+    "buildVersion": "1.3.4",
+    "compression": "maximum",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "./bin/wwwroot/favicon.ico"
+    },
+    "directories": {
+      "output": "../../../bin/Desktop",
+      "buildResources": "../../../build"
+    },
+    "extraResources": [
+      {
+        "from": "./bin",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "files": [
+      {
+        "from": "./ElectronHostHook/node_modules",
+        "to": "ElectronHostHook/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      },
+      "**/*"
+    ]
+  }
+}
