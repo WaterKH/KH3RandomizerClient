@@ -48,4 +48,4 @@ Rudabegga: They pointed us towards hosting with DigitalOcean, which has made the
 Clara The Classy: They did an amazing job cross-referencing treasure chest data to verify that chests were being properly shown on the website with the correct text.
 SwiftShadow: They helped by contributing code to the hint system, allowing easier to follow hints, modular amount of hints per report and added a new category to map to.
 
-You can also join the [Kingdom Hearts 3 Randomizer Discord](https://discord.gg/qf42CZfVBr) to help, find people to play the KH3 Rando with or discuss this project in general.
+You can also join the [Kingdom Hearts 3 Randomizer Community Discord](https://discord.gg/qf42CZfVBr) to help, find people to play the KH3 Rando with or discuss this project in general.
