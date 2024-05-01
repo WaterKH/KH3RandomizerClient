@@ -13,7 +13,7 @@ namespace KH3Randomizer.Data
         // Don't provide empty hints for these pools
         List<string> blockedEmptyPools = new List<string>()
         {
-            "Equipment Abilities", "Fullcourse Abilities", "Flantastic Flans", "Minigames", "Battle Portals", "Always On"
+            "Equipment Abilities", "Fullcourse Abilities", "Flantastic Flans", "Minigames", "Battlegates", "Always On"
         };
 
         public byte[] GenerateHints(string seed, Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions, Dictionary<string, RandomizeOptionEnum> availablePools, string hintType, List<string> importantChecks, ref Dictionary<string, List<string>> hintValues)

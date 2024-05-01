@@ -1445,7 +1445,7 @@ namespace KH3Randomizer.Data
                     options.Add(DataTableEnum.VBonus, minigameVbonuses);
 
                     break;
-                case "Battle Portals":
+                case "Battlegates":
                     // Events
                     events = new List<string> { "EVENT_REPORT_001a", "EVENT_REPORT_001b", "EVENT_REPORT_002a", "EVENT_REPORT_002b", "EVENT_REPORT_003a", "EVENT_REPORT_003b", "EVENT_REPORT_004a", "EVENT_REPORT_004b",
                                                 "EVENT_REPORT_005a", "EVENT_REPORT_005b", "EVENT_REPORT_006a", "EVENT_REPORT_006b", "EVENT_REPORT_007a", "EVENT_REPORT_007b", "EVENT_REPORT_008a", "EVENT_REPORT_008b",
@@ -1621,7 +1621,7 @@ namespace KH3Randomizer.Data
                         case "EVENT_REPORT_013a":
                         case "EVENT_REPORT_013b":
                         case "EVENT_REPORT_014":
-                            poolName = "Battle Portals";
+                            poolName = "Battlegates";
                             break;
                         case "EVENT_KEYBLADE_012":
                         case "EVENT_KEYBLADE_013":
@@ -2923,7 +2923,7 @@ namespace KH3Randomizer.Data
                         availableOptions.Add(pool.Key, minigameOptions);
 
                         break;
-                    case "Battle Portals":
+                    case "Battlegates":
                         var battlePortalOptions = new Dictionary<string, bool>
                         {
                             { "Reports", true }, { "Rewards", true }
@@ -3170,7 +3170,7 @@ namespace KH3Randomizer.Data
             {
                 tempPools = pools.Where(x => x.Key == "Sora" || x.Key == "Equipment Abilities" || x.Key == "Data Battle Rewards" || x.Key == "Moogle Workshop" ||
                                         x.Key == "Fullcourse Abilities" || x.Key == "Lucky Emblems" || x.Key == "Flantastic Flans" ||
-                                        x.Key == "Minigames" || x.Key == "Battle Portals" || x.Key == "Always On")
+                                        x.Key == "Minigames" || x.Key == "Battlegates" || x.Key == "Always On")
                                 .ToDictionary(x => x.Key, y => y.Value);
             }
             else if (category == "Stats")
@@ -3846,7 +3846,7 @@ namespace KH3Randomizer.Data
 
         #endregion Minigames
 
-        #region Battle Portals
+        #region Battlegates
 
         public List<Event> GetAvailableBattlePortalEvents(string currentSelection, ref Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions)
         {
@@ -3883,7 +3883,7 @@ namespace KH3Randomizer.Data
             return events;
         }
 
-        #endregion Battle Portals
+        #endregion Battlegates
 
         #region Always On
 

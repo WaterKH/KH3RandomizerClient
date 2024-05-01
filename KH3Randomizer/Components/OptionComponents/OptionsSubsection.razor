@@ -129,7 +129,7 @@
                                 <MinigameSubComponent MinigameName="@this.currentSelection" RandomizedOptions="@this.displayRandomizedOptions" UpdateRandomizedOptions="@this.UpdateRandomizedOptions" UpdateModifications="@this.UpdateModifications"
                                                       AvailableOptions="@this.displayAvailableOptions" ActionType="@((this.SwapOptions != null) ? "Modal" : this.ActionType)" CurrentSeed="@this.CurrentSeed" SwapOptions="@(this.SwapOptions != null ? this.SwapOptions : new Action<DataTableEnum, string, string, string>(EmptyAction))" />
                             }
-                            else if (option.Key == "Battle Portals")
+                            else if (option.Key == "Battlegates")
                             {
                                 <BattlePortalSubComponent BattlePortalName="@this.currentSelection" RandomizedOptions="@this.displayRandomizedOptions" UpdateRandomizedOptions="@this.UpdateRandomizedOptions" UpdateModifications="@this.UpdateModifications"
                                                           AvailableOptions="@this.displayAvailableOptions" ActionType="@((this.SwapOptions != null) ? "Modal" : this.ActionType)" CurrentSeed="@this.CurrentSeed" SwapOptions="@(this.SwapOptions != null ? this.SwapOptions : new Action<DataTableEnum, string, string, string>(EmptyAction))" />
