@@ -82,7 +82,7 @@ namespace KH3Randomizer.Data
                             else if (hintType.Contains("Category"))
                                 hintText = hintLocation;
                             else if (hintType.Contains("Vague"))
-                                hintText = $"There is 1 check {hintLocation}";
+                                hintText = $"There is 1 important check {hintLocation}";
 
                             if (hintDictionary.ContainsKey(hintText))
                                 hintDictionary[hintText].Add(hintName);
@@ -219,7 +219,7 @@ namespace KH3Randomizer.Data
         /// <returns>String used for hints</returns>
         public string GetCategoryHint(string hintKey, List<string> hintValue)
         {
-            return hintValue.Count == 1 ? $"There is {hintValue.Count} check {hintKey}" : $"There are {hintValue.Count} checks {hintKey}";
+            return hintValue.Count == 1 ? $"There is {hintValue.Count} important check {hintKey}" : $"There are {hintValue.Count} important checks {hintKey}";
         }
 
         /// <summary>
@@ -925,21 +925,33 @@ namespace KH3Randomizer.Data
                         #region Events
                         case "EVENT_001":
                             world = "Olympus";
-                            description = "(Forge Goofy's Shield)";
+                            description = "(Forge Knight's Shield+ for Goofy)";
                             break;
 
                         case "EVENT_002":
+                            world = "Olympus";
+                            description = "(Obtain Golden Herc Figure in Thebes: Alleyway, In Building)";
+                            break;
                         case "EVENT_003":
+                            world = "Olympus";
+                            description = "(Obtain Golden Herc Figure in Thebes: Garden, Digged-Up Pit)";
+                            break;
                         case "EVENT_004":
+                            world = "Olympus";
+                            description = "(Obtain Golden Herc Figure in Thebes: Garden, In Building)";
+                            break;
                         case "EVENT_005":
+                            world = "Olympus";
+                            description = "(Obtain Golden Herc Figure in Thebes: Overlook, On Statue's Shield)";
+                            break;
                         case "EVENT_006":
                             world = "Olympus";
-                            description = "(Golden Herc Statue)";
+                            description = "(Obtain Golden Herc Figure in Thebes: Agora, Near Save Point)";
                             break;
 
                         case "EVENT_007":
                             world = "Olympus";
-                            description = "(Return Herc Statues)";
+                            description = "(Return all Golden Herc Figures)";
                             break;
 
                         case "EVENT_008":
@@ -1724,13 +1736,13 @@ namespace KH3Randomizer.Data
             foreach (var levelUp in levelUps)
             {
                 if (levelUp.Value["TypeA"].Equals(value))
-                    levelUpTexts.Add($"{levelUp.Key} (Mystic)");
+                    levelUpTexts.Add($"{levelUp.Key} (Wisdom)");
 
                 if (levelUp.Value["TypeB"].Equals(value))
-                    levelUpTexts.Add($"{levelUp.Key} (Warrior)");
+                    levelUpTexts.Add($"{levelUp.Key} (Vitality)");
 
                 if (levelUp.Value["TypeC"].Equals(value))
-                    levelUpTexts.Add($"{levelUp.Key} (Guardian)");
+                    levelUpTexts.Add($"{levelUp.Key} (Balance)");
 
                 if (levelUpTexts.Count == 3)
                     break;
