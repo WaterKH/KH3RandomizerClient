@@ -170,6 +170,10 @@ namespace KH3Randomizer.Data
             { "Food Effect Stats", new Tuple<int, int>(0, 6) }
         };
 
+        // It looks like there are issues when processing limiters/cleaning up
+        // This is to stop from swaping into pools that have been cleaned
+        private List<string> BlockedCategories = new() { };
+
         public HintService HintService { get; set; }
 
         public RandomizerService(HintService hintService)
@@ -294,6 +298,8 @@ namespace KH3Randomizer.Data
             //        }
             //    }
             //}
+
+            this.BlockedCategories.Clear();
 
             return randomizedOptions;
         }
@@ -1069,7 +1075,7 @@ namespace KH3Randomizer.Data
         public void ProcessLimiters(ref Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions, Dictionary<string, RandomizeOptionEnum> randomizePools, Dictionary<string, int> limiters, Random random, bool canUseNone = true)
         {
             // Handle Level Up Limit
-            if (randomizedOptions.ContainsKey(DataTableEnum.LevelUp) && limiters["Level Up Limit"] != 50)
+            /*if (randomizedOptions.ContainsKey(DataTableEnum.LevelUp) && limiters["Level Up Limit"] != 50)
             {
                 var levelStart = limiters["Level Up Limit"];
                 for (int i = levelStart; i <= 50; ++i)
@@ -1083,7 +1089,35 @@ namespace KH3Randomizer.Data
 
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "", swapOption, canUseNone, false);
                 }
+            }*/
+
+            // Redone Level Up Limit
+            // Other level up limit was working for Type A but not Types B & C
+            if (randomizedOptions.ContainsKey(DataTableEnum.LevelUp) && limiters["Level Up Limit"] != 50)
+            {
+                var levelLimit = limiters["Level Up Limit"];
+                for (int i = 2; i <= 50; ++i)
+                {
+                    var allLevels = i.ToString() + GetLevels(i.ToString()).ToString().Replace("(", ", ").Replace(")", string.Empty);
+                    var levelList = allLevels.Split(',').ToList().Select(int.Parse).ToList();
+                    levelList.Sort();
+                    int highestLevel = levelList[levelList.Count-1];
+
+                    if (highestLevel <= levelLimit)
+                        continue;
+
+                    var tempReward = randomizedOptions[DataTableEnum.LevelUp][i.ToString()]["TypeA"];
+
+                    if (tempReward.Contains("NONE") && !canUseNone)
+                        continue;
+
+                    var swapOption = new Option { Category = DataTableEnum.LevelUp, SubCategory = i.ToString(), Name = "TypeA", Value = tempReward };
+
+                    this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "", swapOption, canUseNone, false);
+                }
             }
+
+            this.BlockedCategories.Add("Level Ups");
 
             // Handle Lucky Emblem Limit
             if (randomizedOptions.ContainsKey(DataTableEnum.LuckyMark) && limiters["Lucky Emblem Limit"] != 90)
@@ -1100,6 +1134,8 @@ namespace KH3Randomizer.Data
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "", swapOption, canUseNone, false);
                 }
             }
+
+            this.BlockedCategories.Add("Lucky Emblems");
 
             // Handle Moogle Synthesis Limit
             if (randomizedOptions.ContainsKey(DataTableEnum.SynthesisItem))
@@ -1190,6 +1226,8 @@ namespace KH3Randomizer.Data
                     }
                 }
             }
+
+            this.BlockedCategories.Add("Synthesis Items");
         }
 
         public Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> GetOptionsForPool(string pool, Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> defaultOptions)
@@ -2046,6 +2084,10 @@ namespace KH3Randomizer.Data
                     continue;
 
                 if (!randomizePools.ContainsKey(this.GetPoolFromOption(option.Category, option.SubCategory)))
+                    continue;
+
+                // Don't swap with an option from a pool that has been processed
+                if (this.BlockedCategories.Contains(option.Category.DataTableEnumToKey()))
                     continue;
 
                 option.Name = options[option.Category][option.SubCategory].ElementAt(random.Next(0, options[option.Category][option.SubCategory].Count)).Key;
@@ -3198,7 +3240,7 @@ namespace KH3Randomizer.Data
             return subCategory switch
             {
                 "2" => new Tuple<string, string>("6", "6"),
-                "4" => new Tuple<string, string>("14", "16"),
+                "4" => new Tuple<string, string>("16", "14"),
                 "6" => new Tuple<string, string>("4", "12"),
                 "9" => new Tuple<string, string>("30", "24"),
                 "12" => new Tuple<string, string>("44", "18"),
