@@ -458,7 +458,7 @@ namespace KH3Randomizer.Data
             string newHintName = hintName;
             if (hintName.Contains("Magic: "))
             {
-                newHintName = hintName.Split("Magic: ")[1] + " Spell";
+                newHintName = hintName.Split("Magic: ")[1] + " Element";
             }
             else if (hintName.Contains("Ability: "))
             {
@@ -489,23 +489,23 @@ namespace KH3Randomizer.Data
                         #region Olympus
                         case "Vbonus_001":
                             world = "Olympus";
-                            description = "(Cliff Ascent Heartless)";
+                            description = "(Mount Olympus: Cliff Ascent Heartless)";
                             break;
                         case "Vbonus_002":
                             world = "Olympus";
-                            description = "(Thebes Agora Flame Cores)";
+                            description = "(Thebes: Agora Flame Cores)";
                             break;
                         case "Vbonus_005":
                             world = "Olympus";
-                            description = "(Thebes Overlook Flame Cores)";
+                            description = "(Thebes: Overlook Flame Cores)";
                             break;
                         case "Vbonus_006":
                             world = "Olympus";
-                            description = "(Thebes Garden Flame Cores)";
+                            description = "(Thebes: Garden Flame Cores)";
                             break;
                         case "Vbonus_007":
                             world = "Olympus";
-                            description = "(Thebes Alleyway Heartless)";
+                            description = "(Thebes: Alleyway Heartless)";
                             break;
                         case "Vbonus_008":
                             world = "Olympus";
@@ -517,7 +517,7 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_011":
                             world = "Olympus";
-                            description = "(Satyr Heartless)";
+                            description = "(Realm of the Gods: Courtyard Satyrs)";
                             break;
                         case "Vbonus_013":
                             world = "Olympus";
@@ -536,7 +536,7 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_016":
                             world = "Twilight Town";
-                            description = "(The Old Mansion Nobodies & Heartless)";
+                            description = "(The Old Mansion Heartless & Nobodies)";
                             break;
                         #endregion Twilight Town
 
@@ -547,11 +547,11 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_018":
                             world = "Toy Box";
-                            description = "(Galaxy Toys Main Floor: 1F Gigas)";
+                            description = "(Galaxy Toys: Main Floor: 1F Gigas)";
                             break;
                         case "Vbonus_019":
                             world = "Toy Box";
-                            description = "(Galaxy Toys Action Figures Supreme Smashers)";
+                            description = "(Galaxy Toys: Action Figures Supreme Smashers)";
                             break;
                         case "Vbonus_020":
                             world = "Toy Box";
@@ -563,7 +563,7 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_022":
                             world = "Toy Box";
-                            description = "(Verum Rex: Beat of Lead)";
+                            description = "(Complete Verum Rex: Beat of Lead during the Story)";
                             break;
                         case "Vbonus_023":
                             world = "Toy Box";
@@ -574,23 +574,23 @@ namespace KH3Randomizer.Data
                         #region Kingdom of Corona
                         case "Vbonus_024":
                             world = "Kingdom of Corona";
-                            description = "(Hills Heartless 1)";
+                            description = "(The Forest: Hills Heartless)";
                             break;
                         case "Vbonus_025":
                             world = "Kingdom of Corona";
-                            description = "(Hills Heartless 2)";
+                            description = "(The Forest: Hills Chief Puffs & Puffballs)";
                             break;
                         case "Vbonus_026":
                             world = "Kingdom of Corona";
-                            description = "(Hills Reapers)";
+                            description = "(The Forest: Hills Reapers)";
                             break;
                         case "Vbonus_027":
                             world = "Kingdom of Corona";
-                            description = "(Chaos Carriage Mini-Boss)";
+                            description = "(Defeat Chaos Carriage)";
                             break;
                         case "Vbonus_028":
                             world = "Kingdom of Corona";
-                            description = "(The Kingdom Nobodies)";
+                            description = "(The Kingdom: Wharf Nobodies)";
                             break;
                         case "Vbonus_029":
                             world = "Kingdom of Corona";
@@ -605,35 +605,35 @@ namespace KH3Randomizer.Data
                         #region Monstropolis
                         case "Vbonus_032":
                             world = "Monstropolis";
-                            description = "(Lobby & Offices Unversed)";
+                            description = "(Monsters Inc: Lobby & Offices Unversed)";
                             break;
                         case "Vbonus_033":
                             world = "Monstropolis";
-                            description = "(Laugh Floor Unversed)";
+                            description = "(Monsters Inc.: Laugh Floor Unversed)";
                             break;
                         case "Vbonus_034":
                             world = "Monstropolis";
-                            description = "(Upper Level Heartless)";
+                            description = "(The Door Vault: Upper Level Heartless)";
                             break;
                         case "Vbonus_035":
                             world = "Monstropolis";
-                            description = "(Second Floor Unversed & Heartless)";
+                            description = "(The Factory: Second Floor Heartless & Unversed)";
                             break;
                         case "Vbonus_036":
                             world = "Monstropolis";
-                            description = "(Second Floor Unversed)";
+                            description = "(The Factory: Second Floor Unversed)";
                             break;
                         case "Vbonus_037":
                             world = "Monstropolis";
-                            description = "(Accessway Unversed & Heartless)";
+                            description = "(The Power Plant: Accessway Heartless & Unversed)";
                             break;
                         case "Vbonus_038":
                             world = "Monstropolis";
-                            description = "(Tank Yard Heartless)";
+                            description = "(The Power Plant: Tank Yard Heartless)";
                             break;
                         case "Vbonus_039":
                             world = "Monstropolis";
-                            description = "(Tank Yard Unversed)";
+                            description = "(The Power Plant: Tank Yard Unversed)";
                             break;
                         case "Vbonus_040":
                             world = "Monstropolis";
@@ -644,23 +644,23 @@ namespace KH3Randomizer.Data
                         #region Arendelle
                         case "Vbonus_041":
                             world = "Arendelle";
-                            description = "(Rock Troll & Winterhorns Mini-Boss)";
+                            description = "(Defeat Rock Troll & Winterhorns)";
                             break;
                         case "Vbonus_042":
                             world = "Arendelle";
-                            description = "(1st Ninja Nobodies)";
+                            description = "(The Labyrinth of Ice: Middle Tier Ninjas I)";
                             break;
                         case "Vbonus_043":
                             world = "Arendelle";
-                            description = "(2nd Ninja Nobodies)";
+                            description = "(The Labyrinth of Ice: Lower Tier Ninjas II)";
                             break;
                         case "Vbonus_044":
                             world = "Arendelle";
-                            description = "(3rd Ninja Nobodies)";
+                            description = "(The Labyrinth of Ice: Middle Tier Ninjas III)";
                             break;
                         case "Vbonus_045":
                             world = "Arendelle";
-                            description = "(4th Ninja Nobodies)";
+                            description = "(The Labyrinth of Ice: Middle Tier Ninjas IV)";
                             break;
                         case "Vbonus_047":
                             world = "Arendelle";
@@ -668,11 +668,11 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_048":
                             world = "Arendelle";
-                            description = "(Frost Serpent Heartless)";
+                            description = "(Frozen Slider Frost Serpents)";
                             break;
                         case "Vbonus_049":
                             world = "Arendelle";
-                            description = "(Valley of Ice Heartless)";
+                            description = "(The North Mountain: Valley of Ice Heartless)";
                             break;
                         case "Vbonus_050":
                             world = "Arendelle";
@@ -683,15 +683,15 @@ namespace KH3Randomizer.Data
                         #region San Fransokyo
                         case "Vbonus_051":
                             world = "San Fransokyo";
-                            description = "(Metal Troll Mini-Boss)";
+                            description = "(Defeat Metal Troll on The Bridge)";
                             break;
                         case "Vbonus_052":
                             world = "San Fransokyo";
-                            description = "(Meeting Hiro in the Garage)";
+                            description = "(Meet Big Hero 6 in Hiro's Garage)";
                             break;
                         case "Vbonus_053":
                             world = "San Fransokyo";
-                            description = "(Satyr Heartless Roof)";
+                            description = "(The City Heartless at Hiro's indicator)";
                             break;
                         case "Vbonus_054":
                             world = "San Fransokyo";
@@ -699,7 +699,7 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_055":
                             world = "San Fransokyo";
-                            description = "(Big Hero 6 Rescue Mission)";
+                            description = "(Rescue Big Hero 6 from Darkubes)";
                             break;
                         case "Vbonus_056":
                             world = "San Fransokyo";
@@ -714,11 +714,11 @@ namespace KH3Randomizer.Data
                         #region The Caribbean
                         case "Vbonus_058":
                             world = "The Caribbean";
-                            description = "(Black Pearl Davy Jones Locker)";
+                            description = "(Davy Jones' Locker Anchor Raiders)";
                             break;
                         case "Vbonus_059":
                             world = "The Caribbean";
-                            description = "(1st Ship Battle)";
+                            description = "(1st Ship Battle - Over the Edge)";
                             break;
                         case "Vbonus_060":
                             world = "The Caribbean";
@@ -730,15 +730,15 @@ namespace KH3Randomizer.Data
                             break;
                         case "Vbonus_062":
                             world = "The Caribbean";
-                            description = "(Luxord Ship Race)";
+                            description = "(Race Luxord to Port Royal)";
                             break;
                         case "Vbonus_063":
                             world = "The Caribbean";
-                            description = "(2nd Ship Battle)";
+                            description = "(2nd Ship Battle - Port Royal Waters)";
                             break;
                         case "Vbonus_064":
                             world = "The Caribbean";
-                            description = "(3rd Ship Battle)";
+                            description = "(3rd Ship Battle - Forsaken Isle)";
                             break;
                         case "Vbonus_065":
                             world = "The Caribbean";
@@ -812,92 +812,92 @@ namespace KH3Randomizer.Data
                         #region Mini-Games
                         case "VBonus_Minigame001":
                             world = "Toy Box";
-                            description = "(A-Rank Verum Rex: Beat of Lead)";
+                            description = "(Obtain A-Rank in Verum Rex: Beat of Lead)";
                             break;
                         case "VBonus_Minigame002":
                             world = "Kingdom of Corona";
-                            description = "(A-Rank Festival Dance)";
+                            description = "(Obtain A-Rank in Festival Dance)";
                             break;
                         case "VBonus_Minigame003":
                             world = "Arendelle";
-                            description = "(A-Rank Frozen Slider)";
+                            description = "(Obtain A-Rank in Frozen Slider)";
                             break;
                         case "VBonus_Minigame004":
                             world = "Arendelle";
-                            description = "(All Treasures Frozen Slider)";
+                            description = "(Collect All Treasures in Frozen Slider)";
                             break;
                         case "VBonus_Minigame005":
                             world = "San Fransokyo";
-                            description = "(A-Rank Flash Tracer 1 (Fred))";
+                            description = "(Obtain A-Rank in Flash Tracer: Course A (Fred))";
                             break;
                         case "VBonus_Minigame006":
                             world = "San Fransokyo";
-                            description = "(A-Rank Flash Tracer 2 (Go Go))";
+                            description = "(Obtain A-Rank in Flash Tracer: Course B (Go Go))";
                             break;
                         #endregion Mini-Games
 
                         #region Flans
                         case "VBonus_Minigame007":
                             world = "Olympus";
-                            description = "(A-Rank Cherry Flan)";
+                            description = "(Encounter Cherry Flan and obtain 20,000 points)";
                             break;
                         case "VBonus_Minigame008":
                             world = "Toy Box";
-                            description = "(A-Rank Strawberry Flan)";
+                            description = "(Encounter Strawberry Flan and obtain 17,000 points)";
                             break;
                         case "VBonus_Minigame009":
                             world = "Kingdom of Corona";
-                            description = "(A-Rank Orange Flan)";
+                            description = "(Encounter Orange Flan and obtain 23,000 points)";
                             break;
                         case "VBonus_Minigame010":
                             world = "Monstropolis";
-                            description = "(A-Rank Banana Flan)";
+                            description = "(Encounter Banana Flan and obtain 20,000 points)";
                             break;
                         case "VBonus_Minigame011":
                             world = "Arendelle";
-                            description = "(A-Rank Grape Flan)";
+                            description = "(Encounter Grape Flan and obtain 20,000 points)";
                             break;
                         case "VBonus_Minigame012":
                             world = "The Caribbean";
-                            description = "(A-Rank Watermelon Flan)";
+                            description = "(Encounter Watermelon Flan and obtain 28,000 points)";
                             break;
                         case "VBonus_Minigame013":
                             world = "San Fransokyo";
-                            description = "(A-Rank Melon Flan)";
+                            description = "(Encounter Honeydew Flan and obtain 15,000 points)";
                             break;
                         #endregion Flans
 
                         #region Re+Mind
                         case "VBonus_DLC_001":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Dark Inferno χ)";
                             break;
                         case "VBonus_DLC_002":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Anti-Aqua)";
                             break;
                         case "VBonus_DLC_003":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Terra-Xehanort)";
                             break;
                         case "VBonus_DLC_004":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Xigbar & Dark Riku)";
                             break;
                         case "VBonus_DLC_005":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Luxord, Marluxia, & Larxene)";
                             break;
                         case "VBonus_DLC_006":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Vanitas & Terra-Xehanort)";
                             break;
                         case "VBonus_DLC_007":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Saix)";
                             break;
                         case "VBonus_DLC_008":
-                            world = "Re+Mind (The Keyblade Graveyard)";
+                            world = "Re:Mind (The Keyblade Graveyard)";
                             description = "(Defeat Young Xehanort, Ansem, & Xemnas)";
                             break;
 
@@ -932,18 +932,22 @@ namespace KH3Randomizer.Data
                             world = "Olympus";
                             description = "(Obtain Golden Herc Figure in Thebes: Alleyway, In Building)";
                             break;
+
                         case "EVENT_003":
                             world = "Olympus";
                             description = "(Obtain Golden Herc Figure in Thebes: Garden, Digged-Up Pit)";
                             break;
+
                         case "EVENT_004":
                             world = "Olympus";
                             description = "(Obtain Golden Herc Figure in Thebes: Garden, In Building)";
                             break;
+
                         case "EVENT_005":
                             world = "Olympus";
                             description = "(Obtain Golden Herc Figure in Thebes: Overlook, On Statue's Shield)";
                             break;
+
                         case "EVENT_006":
                             world = "Olympus";
                             description = "(Obtain Golden Herc Figure in Thebes: Agora, Near Save Point)";
@@ -956,12 +960,12 @@ namespace KH3Randomizer.Data
 
                         case "EVENT_008":
                             world = "Monstropolis";
-                            description = "(Defeat the Unversed before the Power Plant)";
+                            description = "(The Factory: Second Floor Unversed)";
                             break;
 
                         case "EVENT_009":
                             world = "San Fransokyo";
-                            description = "(Rescue the Trapped Big Hero 6 Members)";
+                            description = "(Rescue Big Hero 6 from Darkubes)";
                             break;
                         #endregion Events
 
@@ -1025,89 +1029,89 @@ namespace KH3Randomizer.Data
                             break;
                         case "EVENT_HEARTBINDER_002":
                             world = "Toy Box";
-                            description = "(After Verum Rex: Beat of Lead)";
+                            description = "(Complete Verum Rex: Beat of Lead during the Story)";
                             break;
                         case "EVENT_HEARTBINDER_003":
                             world = "Monstropolis";
-                            description = "(After Tank Yard Heartless)";
+                            description = "(The Power Plant: Tank Yard Heartless)";
                             break;
                         case "EVENT_HEARTBINDER_004":
                             world = "San Fransokyo";
-                            description = "(After Flash Tracer)";
+                            description = "(Complete Flash Tracer during the Story)";
                             break;
                         #endregion Heartbinders
 
-                        #region Battle Gates
+                        #region Battlegates
                         case "EVENT_REPORT_001a":
                         case "EVENT_REPORT_001b":
                             world = "Olympus";
-                            description = "(Complete Battlegate 1)";
+                            description = "(Complete Battlegate 1 in Realm of the Gods: Courtyard)";
                             break;
                         case "EVENT_REPORT_002a":
                         case "EVENT_REPORT_002b":
                             world = "Olympus";
-                            description = "(Complete Battlegate 2)";
+                            description = "(Complete Battlegate 2 in Realm of the Gods: Apex)";
                             break;
                         case "EVENT_REPORT_003a":
                         case "EVENT_REPORT_003b":
                             world = "Twilight Town";
-                            description = "(Complete Battlegate 3)";
+                            description = "(Complete Battlegate 3 at The Old Mansion)";
                             break;
                         case "EVENT_REPORT_004a":
                         case "EVENT_REPORT_004b":
                             world = "Toy Box";
-                            description = "(Complete Battlegate 4)";
+                            description = "(Complete Battlegate 4 in Galaxy Toys: Kid Korral)";
                             break;
                         case "EVENT_REPORT_005a":
                         case "EVENT_REPORT_005b":
                             world = "Toy Box";
-                            description = "(Complete Battlegate 5)";
+                            description = "(Complete Battlegate 5 in Galaxy Toys: Main Floor: 1F)";
                             break;
                         case "EVENT_REPORT_006a":
                         case "EVENT_REPORT_006b":
                             world = "Kingdom of Corona";
-                            description = "(Complete Battlegate 6)";
+                            description = "(Complete Battlegate 6 in The Forest: Wetlands)";
                             break;
                         case "EVENT_REPORT_007a":
                         case "EVENT_REPORT_007b":
                             world = "Kingdom of Corona";
-                            description = "(Complete Battlegate 7)";
+                            description = "(Complete Battlegate 7 in The Forest: Hills)";
                             break;
                         case "EVENT_REPORT_008a":
                         case "EVENT_REPORT_008b":
                             world = "Monstropolis";
-                            description = "(Complete Battlegate 8)";
+                            description = "(Complete Battlegate 8 in The Power Plant: Tank Yard)";
                             break;
                         case "EVENT_REPORT_009a":
                         case "EVENT_REPORT_009b":
                             world = "Arendelle";
-                            description = "(Complete Battlegate 9)";
+                            description = "(Complete Battlegate 9 in The Labyrinth of Ice: Middle Tier)";
                             break;
                         case "EVENT_REPORT_010a":
                         case "EVENT_REPORT_010b":
                             world = "The Caribbean";
-                            description = "(Complete Battlegate 10)";
+                            description = "(Complete Battlegate 10 in The High Seas: Huddled Isles)";
                             break;
                         case "EVENT_REPORT_011a":
                         case "EVENT_REPORT_011b":
                             world = "San Fransokyo";
-                            description = "(Complete Battlegate 11)";
+                            description = "(Complete Battlegate 11 in The City: North District)";
                             break;
                         case "EVENT_REPORT_012a":
                         case "EVENT_REPORT_012b":
                             world = "San Fransokyo";
-                            description = "(Complete Battlegate 12)";
+                            description = "(Complete Battlegate 12 in The City: Central District)";
                             break;
                         case "EVENT_REPORT_013a":
                         case "EVENT_REPORT_013b":
                             world = "The Keyblade Graveyard";
-                            description = "(Complete Battlegate 13)";
+                            description = "(Complete Battlegate 13 in The Badlands)";
                             break;
                         case "EVENT_REPORT_014":
                             world = "The Keyblade Graveyard";
                             description = "(Defeat Dark Inferno)";
                             break;
-                        #endregion Battle Gates
+                        #endregion Battlegates
 
                         #region Key Items
                         case "EVENT_KEYITEM_001":
@@ -1116,7 +1120,7 @@ namespace KH3Randomizer.Data
                             break;
                         case "EVENT_KEYITEM_002":
                             world = "San Fransokyo";
-                            description = "(Hiro's Garage First Visit)";
+                            description = "(Meet Big Hero 6 at Hiro's Garage)";
                             break;
                         case "EVENT_KEYITEM_003":
                             world = "Lucky Emblem Milestones";
