@@ -152,6 +152,19 @@ namespace KH3Randomizer.Data
             "Vbonus_069"
         };
 
+        // List of chests that have had issues with properly giving Abilites or VBonus rewards
+        private readonly List<Tuple<string, DataTableEnum>> ProblemChests = new()
+        {
+            new Tuple<string, DataTableEnum>("FZ_SBOX_005", DataTableEnum.TreasureFZ),
+            new Tuple<string, DataTableEnum>("FZ_SBOX_011", DataTableEnum.TreasureFZ),
+            new Tuple<string, DataTableEnum>("FZ_SBOX_013", DataTableEnum.TreasureFZ),
+            new Tuple<string, DataTableEnum>("FZ_SBOX_015", DataTableEnum.TreasureFZ),
+            new Tuple<string, DataTableEnum>("FZ_SBOX_016", DataTableEnum.TreasureFZ),
+            new Tuple<string, DataTableEnum>("BX_SBOX_016", DataTableEnum.TreasureBX),
+            new Tuple<string, DataTableEnum>("CA_SBOX_043", DataTableEnum.TreasureCA),
+            new Tuple<string, DataTableEnum>("CA_SBOX_044", DataTableEnum.TreasureCA)
+        };
+
         private readonly Dictionary<string, Tuple<int, int>> StatBalancedValues = new()
         {
             { "Base Sora Stats", new Tuple<int, int>(80, 120) },
@@ -2133,6 +2146,19 @@ namespace KH3Randomizer.Data
         public void CleanUpOptions(ref Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions, Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> defaultOptions,
                                    Dictionary<string, RandomizeOptionEnum> randomizePools, Random random, bool canUseNone)
         {
+            foreach (var pChest in this.ProblemChests)
+            {
+                var chestName = pChest.Item1.KeyIdToDisplay().GetChestLocation(pChest.Item2);
+                var currentValue = randomizedOptions[pChest.Item2][pChest.Item1]["Treasure"];
+
+                if (currentValue.Contains("ETresAbilityKind::") || currentValue.Contains("ETresVictoryBonusKind::"))
+                {
+                    var pChestOption = new Option { Category = pChest.Item2, SubCategory = pChest.Item1, Name = "Treasure", Value = currentValue };
+
+                    this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "Item", pChestOption, canUseNone);
+                }
+            }
+
             // Account for early abilities for Critical Mode
             foreach (var vbonus in this.VBonusCriticalAbilities)
             {
@@ -2222,7 +2248,7 @@ namespace KH3Randomizer.Data
                         this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "", reportOption, canUseNone, false);
                     }
                 }
-            }
+            }            
         }
 
         public void GiveDefaultAbilities(ref Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions)
