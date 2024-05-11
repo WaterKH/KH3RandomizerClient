@@ -22,10 +22,6 @@ namespace KH3Randomizer.Data
             "KEY",
             "REPORT",
             "LSI",
-            "ITEM_APUP",
-            "ITEM_MAGICUP",
-            "ITEM_POWERUP",
-            "ITEM_GUARDUP",
             "WEP",
             "ACC",
             "PRT",
@@ -39,10 +35,7 @@ namespace KH3Randomizer.Data
             "DOUBLEFLIGHT",
             "LAST_LEAVE",
             "COMBO_LEAVE",
-            "MELEM",
-            "HP_UP",
-            "MP_UP",
-            "SLOT_UP"
+            "MELEM"
         };
 
         private readonly List<string> ReplaceableAbilities = new()
@@ -158,7 +151,7 @@ namespace KH3Randomizer.Data
             // Monstropolis Chest 20
             new Tuple<string, DataTableEnum>("MI_SBOX_013", DataTableEnum.TreasureMI), 
 
-            // Arrendelle Chests 5, 11, 13, 15, & 16
+            // Arendelle Chests 5, 11, 13, 15, & 16
             new Tuple<string, DataTableEnum>("FZ_SBOX_005", DataTableEnum.TreasureFZ), 
             new Tuple<string, DataTableEnum>("FZ_SBOX_011", DataTableEnum.TreasureFZ),
             new Tuple<string, DataTableEnum>("FZ_SBOX_013", DataTableEnum.TreasureFZ),
@@ -173,7 +166,10 @@ namespace KH3Randomizer.Data
             new Tuple<string, DataTableEnum>("CA_SBOX_042", DataTableEnum.TreasureCA),
             new Tuple<string, DataTableEnum>("CA_SBOX_043", DataTableEnum.TreasureCA),
             new Tuple<string, DataTableEnum>("CA_SBOX_044", DataTableEnum.TreasureCA),
-            new Tuple<string, DataTableEnum>("CA_SBOX_045", DataTableEnum.TreasureCA)
+            new Tuple<string, DataTableEnum>("CA_SBOX_045", DataTableEnum.TreasureCA),
+
+            // Scala ad Caelum Chest 5
+            new Tuple<string, DataTableEnum>("BT_SBOX_003", DataTableEnum.TreasureBT)
         };
 
         private readonly Dictionary<string, Tuple<int, int>> StatBalancedValues = new()
@@ -194,8 +190,8 @@ namespace KH3Randomizer.Data
             { "Food Effect Stats", new Tuple<int, int>(0, 6) }
         };
 
-        // It looks like there are issues when processing limiters/cleaning up
-        // This is to stop from swaping into pools that have been cleaned
+        // It looks like there are issues when processing limiters/exceptions/cleaning up
+        // This is to stop from swapping into pools that have been cleaned
         private List<string> BlockedCategories = new List<string>() { };
         private List<string> BlockedKeys = new List<string>() { };
 
@@ -304,8 +300,8 @@ namespace KH3Randomizer.Data
             // Add some clean-up after the randomization
             this.CleanUpOptions(ref randomizedOptions, defaultOptions, randomizePools, random, canUseNone);
 
-            // Give Default Abilities To Sora (Pole Spin, Air Slide & Doubleflight) unless Exception is already ticked
-            if (!exceptions["Default Abilities"])
+            // Give Default Base Abilities To Sora (Pole Spin, Air Slide & Doubleflight) unless Exception is already ticked
+            if (!exceptions["Default Base Abilities"])
             {
                 this.GiveDefaultAbilities(ref randomizedOptions);
             }
@@ -818,7 +814,7 @@ namespace KH3Randomizer.Data
 
         public void ProcessExceptions(ref Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions, Dictionary<string, RandomizeOptionEnum> randomizePools, Dictionary<string, bool> exceptions, Random random, bool canUseNone = true)
         {
-            if (exceptions["Default Abilities"] && randomizedOptions.ContainsKey(DataTableEnum.ChrInit))
+            if (exceptions["Default Base Abilities"] && randomizedOptions.ContainsKey(DataTableEnum.ChrInit))
             {
                 foreach (var (name, value) in randomizedOptions[DataTableEnum.ChrInit]["m_PlayerSora"])
                 {
@@ -870,7 +866,7 @@ namespace KH3Randomizer.Data
                 }
             }
 
-            if (exceptions["Early Critical Abilities"] && randomizedOptions.ContainsKey(DataTableEnum.VBonus))
+            if (exceptions["Default Bonus Critical Abilities"] && randomizedOptions.ContainsKey(DataTableEnum.VBonus))
             {
                 var airSlidesSeen = new List<string>();
                 var superslidesSeen = new List<string>();
