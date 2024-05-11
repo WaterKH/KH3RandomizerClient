@@ -196,7 +196,8 @@ namespace KH3Randomizer.Data
 
         // It looks like there are issues when processing limiters/cleaning up
         // This is to stop from swaping into pools that have been cleaned
-        private List<string> BlockedCategories = new() { };
+        private List<string> BlockedCategories = new List<string>() { };
+        private List<string> BlockedKeys = new List<string>() { };
 
         public HintService HintService { get; set; }
 
@@ -324,6 +325,7 @@ namespace KH3Randomizer.Data
             //}
 
             this.BlockedCategories.Clear();
+            this.BlockedKeys.Clear();
 
             return randomizedOptions;
         }
@@ -838,6 +840,7 @@ namespace KH3Randomizer.Data
                     var swapCategoryNeeded = this.RetrieveCategoryNeeded(abilityCategory, ability.Key);
 
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, swapCategoryNeeded, swapOption, canUseNone, false);
+                    this.BlockedKeys.Add(name);
                 }
             }
 
@@ -863,12 +866,14 @@ namespace KH3Randomizer.Data
                     var swapCategoryNeeded = this.RetrieveCategoryNeeded(abilityCategory, ability.Key);
 
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, swapCategoryNeeded, swapOption, canUseNone, false);
+                    this.BlockedKeys.Add(name);
                 }
             }
 
             if (exceptions["Early Critical Abilities"] && randomizedOptions.ContainsKey(DataTableEnum.VBonus))
             {
                 var airSlidesSeen = new List<string>();
+                var superslidesSeen = new List<string>();
 
                 foreach (var (subCategory, subCategoryOptions) in randomizedOptions[DataTableEnum.VBonus])
                 {
@@ -893,6 +898,18 @@ namespace KH3Randomizer.Data
                                 abilityBonus = randomizedOptions[abilityBonusCategory][abilityBonusSubCategory].FirstOrDefault(z => z.Key != "EquipAbility2" && z.Value == result.Value);
 
                                 airSlidesSeen.Add(subCategory);
+                            }
+                        }
+                        else if (result.Value.Contains("SUPERSLIDE"))
+                        {
+                            abilityBonusCategory = randomizedOptions.FirstOrDefault(x => x.Value.Any(y => !y.Key.Contains("GIVESORA") && y.Key != subCategory && !superslidesSeen.Contains(y.Key) && y.Value.Any(z => z.Key != "EquipAbility5" && z.Value == result.Value))).Key;
+
+                            if (abilityBonusCategory != DataTableEnum.None)
+                            {
+                                abilityBonusSubCategory = randomizedOptions[abilityBonusCategory].FirstOrDefault(y => !y.Key.Contains("GIVESORA") && y.Key != subCategory && y.Value.Any(z => z.Key != "EquipAbility5" && z.Value == result.Value)).Key;
+                                abilityBonus = randomizedOptions[abilityBonusCategory][abilityBonusSubCategory].FirstOrDefault(z => z.Key != "EquipAbility5" && z.Value == result.Value);
+
+                                superslidesSeen.Add(subCategory);
                             }
                         }
                         else
@@ -922,6 +939,8 @@ namespace KH3Randomizer.Data
                         }
                     }
 
+                    this.BlockedKeys.Add(subCategory);
+
                     // Once we hit this, we've reached the end of our list
                     if (subCategory == "Vbonus_069")
                         break;
@@ -934,6 +953,8 @@ namespace KH3Randomizer.Data
                 var swapOption = new Option { Category = DataTableEnum.Event, SubCategory = "TresUIMobilePortalDataAsset", Name = "Reward", Value = tempReward };
 
                 this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "Item", swapOption, canUseNone, false);
+
+                this.BlockedKeys.Add("TresUIMobilePortalDataAsset");
             }
 
             if (exceptions["Replace Little Chef's Reward"] && randomizedOptions.ContainsKey(DataTableEnum.Event))
@@ -942,6 +963,8 @@ namespace KH3Randomizer.Data
                 var swapOption = new Option { Category = DataTableEnum.Event, SubCategory = "EVENT_KEYBLADE_010", Name = "RandomizedItem", Value = tempReward };
 
                 this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "Item", swapOption, canUseNone, false);
+
+                this.BlockedKeys.Add("EVENT_KEYBLADE_010");
             }
 
             if (exceptions["Replace Golden Herc Rewards"] && randomizedOptions.ContainsKey(DataTableEnum.Event))
@@ -954,6 +977,7 @@ namespace KH3Randomizer.Data
                     var swapOption = new Option { Category = DataTableEnum.Event, SubCategory = key, Name = "RandomizedItem", Value = tempReward };
 
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "Item", swapOption, canUseNone, false);
+                    this.BlockedKeys.Add(key);
                 }
             }
 
@@ -973,6 +997,7 @@ namespace KH3Randomizer.Data
 
                         this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "", swapOption, canUseNone, false);
                     }
+                    this.BlockedKeys.Add(key);
                 }
             }
 
@@ -988,8 +1013,9 @@ namespace KH3Randomizer.Data
                         var tempReward = randomizedOptions[DataTableEnum.SynthesisItem][photoMission][name];
                         var swapOption = new Option { Category = DataTableEnum.SynthesisItem, SubCategory = photoMission, Name = name, Value = tempReward };
 
-                        this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "", swapOption, canUseNone, false);
+                        this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "Item", swapOption, canUseNone, false);
                     }
+                    this.BlockedKeys.Add(photoMission);
                 }
             }
 
@@ -2117,6 +2143,8 @@ namespace KH3Randomizer.Data
                 option.Name = options[option.Category][option.SubCategory].ElementAt(random.Next(0, options[option.Category][option.SubCategory].Count)).Key;
                 option.Value = options[option.Category][option.SubCategory][option.Name];
 
+                if (this.BlockedKeys.Contains(option.SubCategory) || (option.SubCategory.Equals("m_PlayerSora") && this.BlockedKeys.Contains(option.Name)))
+                    continue;
 
                 if (option.Value.Contains("NONE") && !canUseNone)
                     continue;
