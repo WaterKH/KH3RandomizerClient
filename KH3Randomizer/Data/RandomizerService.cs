@@ -168,9 +168,12 @@ namespace KH3Randomizer.Data
             // San Fransokyo Chest 17
             new Tuple<string, DataTableEnum>("BX_SBOX_016", DataTableEnum.TreasureBX),
 
-            // Caribbean Chests 42 & 43
+            // Caribbean Chests 16, 41, 42, 43, & 44
+            new Tuple<string, DataTableEnum>("CA_SBOX_020", DataTableEnum.TreasureCA),
+            new Tuple<string, DataTableEnum>("CA_SBOX_042", DataTableEnum.TreasureCA),
             new Tuple<string, DataTableEnum>("CA_SBOX_043", DataTableEnum.TreasureCA),
-            new Tuple<string, DataTableEnum>("CA_SBOX_044", DataTableEnum.TreasureCA)
+            new Tuple<string, DataTableEnum>("CA_SBOX_044", DataTableEnum.TreasureCA),
+            new Tuple<string, DataTableEnum>("CA_SBOX_045", DataTableEnum.TreasureCA)
         };
 
         private readonly Dictionary<string, Tuple<int, int>> StatBalancedValues = new()
