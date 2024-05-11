@@ -155,12 +155,20 @@ namespace KH3Randomizer.Data
         // List of chests that have had issues with properly giving Abilites or VBonus rewards
         private readonly List<Tuple<string, DataTableEnum>> ProblemChests = new()
         {
-            new Tuple<string, DataTableEnum>("FZ_SBOX_005", DataTableEnum.TreasureFZ),
+            // Monstropolis Chest 20
+            new Tuple<string, DataTableEnum>("MI_SBOX_013", DataTableEnum.TreasureMI), 
+
+            // Arrendelle Chests 5, 11, 13, 15, & 16
+            new Tuple<string, DataTableEnum>("FZ_SBOX_005", DataTableEnum.TreasureFZ), 
             new Tuple<string, DataTableEnum>("FZ_SBOX_011", DataTableEnum.TreasureFZ),
             new Tuple<string, DataTableEnum>("FZ_SBOX_013", DataTableEnum.TreasureFZ),
             new Tuple<string, DataTableEnum>("FZ_SBOX_015", DataTableEnum.TreasureFZ),
             new Tuple<string, DataTableEnum>("FZ_SBOX_016", DataTableEnum.TreasureFZ),
+
+            // San Fransokyo Chest 17
             new Tuple<string, DataTableEnum>("BX_SBOX_016", DataTableEnum.TreasureBX),
+
+            // Caribbean Chests 42 & 43
             new Tuple<string, DataTableEnum>("CA_SBOX_043", DataTableEnum.TreasureCA),
             new Tuple<string, DataTableEnum>("CA_SBOX_044", DataTableEnum.TreasureCA)
         };
@@ -2146,9 +2154,9 @@ namespace KH3Randomizer.Data
         public void CleanUpOptions(ref Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> randomizedOptions, Dictionary<DataTableEnum, Dictionary<string, Dictionary<string, string>>> defaultOptions,
                                    Dictionary<string, RandomizeOptionEnum> randomizePools, Random random, bool canUseNone)
         {
+            // Replace Abilities or VBonus rewards from problem chests
             foreach (var pChest in this.ProblemChests)
             {
-                var chestName = pChest.Item1.KeyIdToDisplay().GetChestLocation(pChest.Item2);
                 var currentValue = randomizedOptions[pChest.Item2][pChest.Item1]["Treasure"];
 
                 if (currentValue.Contains("ETresAbilityKind::") || currentValue.Contains("ETresVictoryBonusKind::"))
