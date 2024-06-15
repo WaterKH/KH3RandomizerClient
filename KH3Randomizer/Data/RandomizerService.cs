@@ -822,6 +822,11 @@ namespace KH3Randomizer.Data
                         continue;
 
                     var defaultAbility = this.GetDefaultAbility(name);
+                    this.BlockedKeys.Add(name);
+
+                    // Don't swap if this check is already the default ability
+                    if (defaultAbility == randomizedOptions[DataTableEnum.ChrInit]["m_PlayerSora"][name])
+                        continue;
 
                     var abilityCategory = randomizedOptions.FirstOrDefault(x => x.Value.Any(y => !y.Key.Contains("GIVESORA") && y.Value.Any(z => z.Value == defaultAbility))).Key;
                     var abilitySubCategory = randomizedOptions[abilityCategory].FirstOrDefault(y => !y.Key.Contains("GIVESORA") && y.Value.Any(z => z.Value == defaultAbility)).Key;
@@ -835,8 +840,8 @@ namespace KH3Randomizer.Data
 
                     var swapCategoryNeeded = this.RetrieveCategoryNeeded(abilityCategory, ability.Key);
 
+
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, swapCategoryNeeded, swapOption, canUseNone, false);
-                    this.BlockedKeys.Add(name);
                 }
             }
 
@@ -848,6 +853,11 @@ namespace KH3Randomizer.Data
                         continue;
 
                     var defaultAbility = this.GetDefaultAbility(name);
+                    this.BlockedKeys.Add(name);
+
+                    // Don't swap if this check is already the default ability
+                    if (defaultAbility == randomizedOptions[DataTableEnum.ChrInit]["m_PlayerSora"][name])
+                        continue;
 
                     var abilityCategory = randomizedOptions.FirstOrDefault(x => x.Value.Any(y => !y.Key.Contains("GIVESORA") && y.Value.Any(z => z.Value == defaultAbility))).Key;
                     var abilitySubCategory = randomizedOptions[abilityCategory].FirstOrDefault(y => !y.Key.Contains("GIVESORA") && y.Value.Any(z => z.Value == defaultAbility)).Key;
@@ -862,7 +872,6 @@ namespace KH3Randomizer.Data
                     var swapCategoryNeeded = this.RetrieveCategoryNeeded(abilityCategory, ability.Key);
 
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, swapCategoryNeeded, swapOption, canUseNone, false);
-                    this.BlockedKeys.Add(name);
                 }
             }
 
@@ -877,6 +886,7 @@ namespace KH3Randomizer.Data
                         continue;
 
                     var results = this.GetDefaultAbilitiesBonusesForVBonus(subCategory);
+                    this.BlockedKeys.Add(subCategory);
 
                     foreach (var result in results)
                     {
@@ -921,9 +931,13 @@ namespace KH3Randomizer.Data
 
                         if (abilityBonusCategory != DataTableEnum.None)
                         {
+                            var temp = randomizedOptions[DataTableEnum.VBonus][subCategory][result.Key];
+
+                            // Don't swap options if this already matches the default
+                            if (temp == abilityBonus.Value)
+                                continue;
 
                             // Swap these options
-                            var temp = randomizedOptions[DataTableEnum.VBonus][subCategory][result.Key];
                             randomizedOptions[DataTableEnum.VBonus][subCategory][result.Key] = abilityBonus.Value;
 
                             // Extra precaution to verify we swap this into a correct spot
@@ -934,8 +948,6 @@ namespace KH3Randomizer.Data
                             this.SwapRandomOption(ref randomizedOptions, randomizePools, random, swapCategoryNeeded, swapOption, canUseNone, false);
                         }
                     }
-
-                    this.BlockedKeys.Add(subCategory);
 
                     // Once we hit this, we've reached the end of our list
                     if (subCategory == "Vbonus_069")
@@ -973,6 +985,7 @@ namespace KH3Randomizer.Data
                     var swapOption = new Option { Category = DataTableEnum.Event, SubCategory = key, Name = "RandomizedItem", Value = tempReward };
 
                     this.SwapRandomOption(ref randomizedOptions, randomizePools, random, "Item", swapOption, canUseNone, false);
+
                     this.BlockedKeys.Add(key);
                 }
             }
