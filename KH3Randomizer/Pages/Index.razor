@@ -77,22 +77,22 @@
         { "Kingdom of Corona", RandomizeOptionEnum.Randomize }, { "Monstropolis", RandomizeOptionEnum.Randomize }, { "100 Acre Wood", RandomizeOptionEnum.Replace },
         { "Arendelle", RandomizeOptionEnum.Randomize }, { "San Fransokyo", RandomizeOptionEnum.Randomize }, { "The Caribbean", RandomizeOptionEnum.Randomize },
         { "Keyblade Graveyard", RandomizeOptionEnum.Randomize }, { "Re+Mind", RandomizeOptionEnum.Randomize }, { "Dark World", RandomizeOptionEnum.Randomize },
-        { "Unreality", RandomizeOptionEnum.Randomize },
+        { "Unreality", RandomizeOptionEnum.Replace },
 
         // Miscellaneous Categories
         { "Sora", RandomizeOptionEnum.Randomize }, { "Equipment Abilities", RandomizeOptionEnum.Randomize }, { "Data Battle Rewards", RandomizeOptionEnum.Randomize },
         { "Moogle Workshop", RandomizeOptionEnum.Randomize }, { "Fullcourse Abilities", RandomizeOptionEnum.Vanilla }, { "Lucky Emblems", RandomizeOptionEnum.Randomize },
-        { "Flantastic Flans", RandomizeOptionEnum.Replace }, { "Minigames", RandomizeOptionEnum.Replace }, { "Battle Portals", RandomizeOptionEnum.Randomize },
+        { "Flantastic Flans", RandomizeOptionEnum.Replace }, { "Minigames", RandomizeOptionEnum.Replace }, { "Battlegates", RandomizeOptionEnum.Replace },
 
         // Stat Categories
         { "Base Sora Stats", RandomizeOptionEnum.Balanced }, { "Level Up Stats", RandomizeOptionEnum.Balanced }, { "Keyblade Enhance Stats", RandomizeOptionEnum.Boosted },
         { "Equipment Stats", RandomizeOptionEnum.Balanced }, { "Food Effect Stats", RandomizeOptionEnum.Balanced },
 
         // Enemy Categories
-        { "Enemies", RandomizeOptionEnum.Randomize }, { "Bosses", RandomizeOptionEnum.Randomize },
+        { "Enemies", RandomizeOptionEnum.Vanilla }, { "Bosses", RandomizeOptionEnum.Vanilla },
 
         // Party Categories
-        { "Party Members", RandomizeOptionEnum.Randomize },
+        { "Party Members", RandomizeOptionEnum.Vanilla },
 
         // Always On - Proofs, Oathkeeper, Oblivion, Meow Wow, Gummiphone
         { "Always On", RandomizeOptionEnum.Replace }
@@ -103,9 +103,9 @@
     private Dictionary<string, bool> exceptions = new Dictionary<string, bool>
 {
         { "Can Be None", false },
-        { "Default Abilities", false },
+        { "Default Base Abilities", false },
         { "Default Critical Abilities", true },
-        { "Early Critical Abilities", false },
+        { "Default Bonus Critical Abilities", false },
         { "Extra Movement", true },
         { "Safe Magic Locations", true },
 
@@ -118,9 +118,9 @@
         { "Allow All Stats", false },
         { "Allow Negative Stats", false },
 
-        { "Default Data Battles", true },
-        { "Default End Game Battles", true },
-        { "Default Yozora Battle", true },
+        { "Default Data Battles", false },
+        { "Default End Game Battles", false },
+        { "Default Yozora Battle", false },
         { "Default Donald & Goofy", false },
         { "Enemy Chaos", false },
         { "Party Chaos", false }
@@ -161,10 +161,10 @@
         },
         { "Events", new Dictionary<string, bool> {
             { "Frozen Chase Skip", true },  { "Faster Crab Collection", true }, { "Big Hero Rescue Skip", false },
-            { "Faster Sora Collection", true }, { "Union χ Skip", false }, { "Guardians of Light Skip", true } }
+            { "Faster Sora Collection", true }, { "Union χ Skip", false }, { "Guardians of Light Skip", false } }
         },
         { "Items", new Dictionary<string, bool> {
-            { "All Maps Unlocked", false }, { "Easily Upgraded Keyblades", false }, { "Max Level Ship", true } }
+            { "All Maps Unlocked", true }, { "Easily Upgraded Keyblades", false }, { "Max Level Ship", true } }
         }
     };
 

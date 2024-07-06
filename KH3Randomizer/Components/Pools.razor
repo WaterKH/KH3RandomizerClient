@@ -258,7 +258,7 @@
         <h3 style="display: inline;">World &amp; Miscellaneous Exceptions</h3>
 
         <div class="row">
-            @foreach (var (name, value) in this.exceptions.Where(x => x.Key == "Can Be None" || x.Key == "Default Abilities" || x.Key == "Default Critical Abilities" || x.Key == "Early Critical Abilities" || x.Key == "Extra Movement" || x.Key == "Safe Magic Locations"
+            @foreach (var (name, value) in this.exceptions.Where(x => x.Key == "Can Be None" || x.Key == "Default Base Abilities" || x.Key == "Default Critical Abilities" || x.Key == "Default Bonus Critical Abilities" || x.Key == "Extra Movement" || x.Key == "Safe Magic Locations"
                                                                 || x.Key == "Replace Classic Kingdom Reward" || x.Key == "Replace Little Chef's Reward" || x.Key == "Replace Golden Herc Rewards" || x.Key == "Replace Sora Collection Rewards" || x.Key == "Replace Photo Missions"))
             {
                 <div class="col-md-4" style="margin: 15px 0px;">
@@ -405,15 +405,15 @@
     private Dictionary<string, string> exceptionDescriptions = new Dictionary<string, string>
 {
         { "Can Be None", "Allows None to appear in all Pools. For instance, opening a chest may have nothing in it." },
-        { "Default Abilities", "Keeps Sora's base abilities from being randomized, like Pole Spin, Dodge, Block, etc." },
-        { "Default Critical Abilities", "Keeps Sora's base critical abilities from being randomized, like Critical Converter, Critical Counter, etc." },
-        { "Early Critical Abilities", "Keeps Sora's early critical abilities earned from being randomized, like Air Slide, Superslide, etc." },
+        { "Default Base Abilities", "Prevents default starting abilities from being randomized like Block, Dodge Roll, Pole Spin, etc." },
+        { "Default Critical Abilities", "Prevents Critical Counter, Critical Recharge, and Critical Converter from being randomized." },
+        { "Default Bonus Critical Abilities", "Prevents abilities from Bonuses when starting on Critical Mode from being randomized like Aerial Recovery, Combo Master, etc." },
         { "Extra Movement", "Adds additional movement abilities that overwrite materials in the Pools, like Dodge Roll, Air Slide, etc. - This can cause empty checks." },
         { "Safe Magic Locations", "Attempts to add Magic only in places where a retry will not remove it from Sora's magic pool." },
 
-        { "Replace Classic Kingdom Reward", "Replaces the reward for getting all High-scores with something marked as replaceable." },
+        { "Replace Classic Kingdom Reward", "Replaces the reward for getting High Scores on all Classic Kingdom minigames with something marked as replaceable." },
         { "Replace Little Chef's Reward", "Replaces the reward for completing all Little Chef's recipes with something marked as replaceable." },
-        { "Replace Golden Herc Rewards", "Replaces the reward for finding all Golden Herc statues with something marked as replaceable." },
+        { "Replace Golden Herc Rewards", "Replaces the rewards for picking up Golden Herc statues and returning all Golden Herc statues with something marked as replaceable." },
         { "Replace Sora Collection Rewards", "Replaces the reward for collecting 222 and 333 Soras in the Final World with something marked as replaceable." },
         { "Replace Photo Missions", "Replaces the reward for taking pictures of specific enemies, party members or locations." },
 
@@ -450,9 +450,9 @@
         { "Moogle Workshop", "Synthesis Items, Photo Mission Rewards and Abilities gained from leveling up Keyblades." },
         { "Fullcourse Abilities", "Abilities gained for a limited amount of time from eating fullcourse meals." },
         { "Lucky Emblems", "Rewards earned for finding Lucky Emblems." },
-        { "Flantastic Flans", "Rewards earned for max completing a Flan Missions." },
+        { "Flantastic Flans", "Rewards earned for getting a certain amount of points in Flan Missions." },
         { "Minigames", "Rewards earned for obtaining an A-Rank in a Minigame." },
-        { "Battle Portals", "Rewards earned for completing a Battle Portal." },
+        { "Battlegates", "Rewards earned for completing a Battlegate." },
 
         { "Base Sora Stats", "Stats related to Sora's initial Max Health, Magic and Focus Points." },
         { "Level Up Stats", "Stats for Sora's Level Up Attack, Magic, Defense and Ability Points." },
