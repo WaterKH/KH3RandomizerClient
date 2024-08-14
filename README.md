@@ -1,6 +1,9 @@
 # KH3RandomizerWebsite
 The official project for the online hosted seed generator for the Kingdom Hearts 3 Randomizer. This is also the basis for the client project that uses Electron.NET to create a desktop application. After a hiatus, there will be a run-down of the documentation either on the GitHub wiki or a video detailing an overview of the project.
 
+# How to Build
+[Electron Build Instructions](https://github.com/ElectronNET/Electron.NET?tab=readme-ov-file#-building-release-artifacts).
+
 # How to Play
 To play the Kingdom Hearts 3 Randomizer, you will need two things: 1) A randomized seed pak made with the Seed Generator, and 2) The [Latest GoA+Randomizer Pak](https://github.com/Water-and-Critic/KH3-Rando-GoA/releases). 
 
